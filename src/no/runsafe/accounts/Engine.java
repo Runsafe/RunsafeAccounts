@@ -1,17 +1,29 @@
 package no.runsafe.accounts;
 
+import no.runsafe.accounts.repositories.AccountRepository;
 import no.runsafe.framework.server.player.RunsafePlayer;
 
 import java.util.zip.Adler32;
 
 public class Engine
 {
+	public Engine(AccountRepository repository)
+	{
+		this.repository = repository;
+	}
+
 	public String getNewAuthToken(RunsafePlayer player)
 	{
-		Adler32 checksum = new Adler32();
-		String input = player.getName() + System.currentTimeMillis();
-		checksum.update(input.getBytes());
+		String playerName = player.getName();
+		String input = playerName + System.currentTimeMillis();
 
-		return Integer.toHexString((int) checksum.getValue());
+		Adler32 checksum = new Adler32();
+		checksum.update(input.getBytes());
+		String token = Integer.toHexString((int) checksum.getValue());
+
+		this.repository.update(playerName, token);
+		return token;
 	}
+
+	private AccountRepository repository;
 }
