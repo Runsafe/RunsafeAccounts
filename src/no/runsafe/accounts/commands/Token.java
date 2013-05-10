@@ -6,9 +6,9 @@ import no.runsafe.framework.server.player.RunsafePlayer;
 
 import java.util.HashMap;
 
-public class BLAH extends PlayerCommand
+public class Token extends PlayerCommand
 {
-	public BLAH(Engine engine)
+	public Token(Engine engine)
 	{
 		super("token", "Generates a new account token", "runsafe.accounts.token");
 		this.engine = engine;
