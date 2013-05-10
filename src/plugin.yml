@@ -1,10 +1,8 @@
 name: RunsafeAccounts
 main: no.runsafe.accounts.Plugin
 version: 1.0.@BUILD@
-authors: []
-depend: []
-description:
+author: Kruithne
+description: A plug-in to link the RunsafeAccounts from website to server
 commands:
-  something:
-    description:
-    aliases: []
+  account:
+    description: Shows available commands for runsafe accounts
