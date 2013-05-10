@@ -10,14 +10,14 @@ public class Plugin extends RunsafePlugin
 	@Override
 	protected void PluginSetup()
 	{
+		// Repositories
+		this.addComponent(AccountRepository.class);
+
 		this.addComponent(Engine.class);
 
 		// Commands
 		Command account = new Command("account", "A collection of account management tools.", null);
 		account.addSubCommand(getInstance(Token.class));
 		this.addComponent(account);
-
-		// Repositories
-		this.addComponent(AccountRepository.class);
 	}
 }
