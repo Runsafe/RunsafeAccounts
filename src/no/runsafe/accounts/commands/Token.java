@@ -18,6 +18,7 @@ public class Token extends PlayerCommand
 	public String OnExecute(RunsafePlayer executor, HashMap<String, String> parameters)
 	{
 		executor.sendColouredMessage("&cDO NOT give your token to ANYONE under any circumstance.");
+		executor.sendColouredMessage("&aRunning this command again will unlink your account again.");
 		return "&3New account token: " + this.engine.getNewAuthToken(executor);
 	}
 

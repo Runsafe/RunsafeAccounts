@@ -39,7 +39,7 @@ public class AccountRepository extends Repository
 				"CREATE TABLE `runsafe_account_tokens` (" +
 						"`playerName` varchar(50) NOT NULL," +
 						"`token` varchar(8) NOT NULL," +
-						"PRIMARY KEY(`playerName`, `token`)" +
+						"PRIMARY KEY(`playerName`)" +
 				")"
 		);
 		versions.put(1, sql);
