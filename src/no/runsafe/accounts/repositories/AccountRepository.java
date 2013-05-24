@@ -28,6 +28,10 @@ public class AccountRepository extends Repository
 					"ON DUPLICATE KEY UPDATE token = ?",
 				playerName, token, token
 		);
+
+		this.database.Execute(
+			"DELETE FROM `runsafe_account_links` WHERE PlayerName = ?", playerName
+		);
 	}
 
 	@Override
