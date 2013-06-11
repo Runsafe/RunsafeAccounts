@@ -3,7 +3,7 @@ package no.runsafe.accounts;
 import no.runsafe.accounts.commands.Token;
 import no.runsafe.accounts.repositories.AccountRepository;
 import no.runsafe.framework.RunsafePlugin;
-import no.runsafe.framework.command.Command;
+import no.runsafe.framework.api.command.Command;
 
 public class Plugin extends RunsafePlugin
 {

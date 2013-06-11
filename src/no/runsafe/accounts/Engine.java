@@ -1,7 +1,7 @@
 package no.runsafe.accounts;
 
 import no.runsafe.accounts.repositories.AccountRepository;
-import no.runsafe.framework.server.player.RunsafePlayer;
+import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
 import java.util.zip.Adler32;
 
