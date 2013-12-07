@@ -2,7 +2,7 @@ package no.runsafe.accounts.commands;
 
 import no.runsafe.accounts.Engine;
 import no.runsafe.framework.api.command.player.PlayerCommand;
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
+import no.runsafe.framework.api.player.IPlayer;
 
 import java.util.Map;
 
@@ -15,7 +15,7 @@ public class Token extends PlayerCommand
 	}
 
 	@Override
-	public String OnExecute(RunsafePlayer executor, Map<String, String> parameters)
+	public String OnExecute(IPlayer executor, Map<String, String> parameters)
 	{
 		executor.sendColouredMessage("&cDO NOT give your token to ANYONE under any circumstance.");
 		executor.sendColouredMessage("&aRunning this command again will unlink your account again.");

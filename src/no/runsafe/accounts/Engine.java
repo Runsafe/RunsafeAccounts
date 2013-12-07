@@ -1,7 +1,7 @@
 package no.runsafe.accounts;
 
 import no.runsafe.accounts.repositories.AccountRepository;
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
+import no.runsafe.framework.api.player.IPlayer;
 
 import java.util.zip.Adler32;
 
@@ -12,7 +12,7 @@ public class Engine
 		this.repository = repository;
 	}
 
-	public String getNewAuthToken(RunsafePlayer player)
+	public String getNewAuthToken(IPlayer player)
 	{
 		String playerName = player.getName();
 		String input = playerName + System.currentTimeMillis();
