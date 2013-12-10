@@ -30,7 +30,7 @@ public class AccountRepository extends Repository
 		);
 
 		this.database.Execute(
-			"DELETE FROM `runsafe_account_links` WHERE PlayerName = ?", playerName
+			"DELETE FROM `runsafe_account_links` WHERE playerName = ?", playerName
 		);
 	}
 
