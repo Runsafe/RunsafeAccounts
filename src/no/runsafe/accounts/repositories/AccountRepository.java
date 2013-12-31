@@ -23,13 +23,13 @@ public class AccountRepository extends Repository
 
 	public void update(String playerName, String token)
 	{
-		this.database.Execute(
-				"INSERT INTO `runsafe_account_tokens` (playerName, token) VALUES(?, ?) " +
-					"ON DUPLICATE KEY UPDATE token = ?",
-				playerName, token, token
+		this.database.execute(
+			"INSERT INTO `runsafe_account_tokens` (playerName, token) VALUES(?, ?) " +
+				"ON DUPLICATE KEY UPDATE token = ?",
+			playerName, token, token
 		);
 
-		this.database.Execute(
+		this.database.execute(
 			"DELETE FROM `runsafe_account_links` WHERE playerName = ?", playerName
 		);
 	}
@@ -40,10 +40,10 @@ public class AccountRepository extends Repository
 		HashMap<Integer, List<String>> versions = new LinkedHashMap<Integer, List<String>>();
 		ArrayList<String> sql = new ArrayList<String>();
 		sql.add(
-				"CREATE TABLE `runsafe_account_tokens` (" +
-						"`playerName` varchar(50) NOT NULL," +
-						"`token` varchar(8) NOT NULL," +
-						"PRIMARY KEY(`playerName`)" +
+			"CREATE TABLE `runsafe_account_tokens` (" +
+				"`playerName` varchar(50) NOT NULL," +
+				"`token` varchar(8) NOT NULL," +
+				"PRIMARY KEY(`playerName`)" +
 				")"
 		);
 		versions.put(1, sql);
