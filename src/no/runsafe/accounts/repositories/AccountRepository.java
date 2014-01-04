@@ -1,12 +1,9 @@
 package no.runsafe.accounts.repositories;
 
 import no.runsafe.framework.api.database.IDatabase;
+import no.runsafe.framework.api.database.ISchemaUpdate;
 import no.runsafe.framework.api.database.Repository;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
+import no.runsafe.framework.api.database.SchemaUpdate;
 
 public class AccountRepository extends Repository
 {
@@ -35,19 +32,19 @@ public class AccountRepository extends Repository
 	}
 
 	@Override
-	public HashMap<Integer, List<String>> getSchemaUpdateQueries()
+	public ISchemaUpdate getSchemaUpdateQueries()
 	{
-		HashMap<Integer, List<String>> versions = new LinkedHashMap<Integer, List<String>>(1);
-		ArrayList<String> sql = new ArrayList<String>();
-		sql.add(
+		ISchemaUpdate update = new SchemaUpdate();
+
+		update.addQueries(
 			"CREATE TABLE `runsafe_account_tokens` (" +
 				"`playerName` varchar(50) NOT NULL," +
 				"`token` varchar(8) NOT NULL," +
 				"PRIMARY KEY(`playerName`)" +
-				")"
+			")"
 		);
-		versions.put(1, sql);
-		return versions;
+
+		return update;
 	}
 
 	private IDatabase database;
