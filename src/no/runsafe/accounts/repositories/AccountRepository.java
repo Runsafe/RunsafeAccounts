@@ -7,11 +7,6 @@ import no.runsafe.framework.api.database.SchemaUpdate;
 
 public class AccountRepository extends Repository
 {
-	public AccountRepository(IDatabase database)
-	{
-		this.database = database;
-	}
-
 	@Override
 	public String getTableName()
 	{
@@ -46,6 +41,4 @@ public class AccountRepository extends Repository
 
 		return update;
 	}
-
-	private IDatabase database;
 }
