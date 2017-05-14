@@ -4,6 +4,7 @@ import no.runsafe.framework.api.database.IDatabase;
 import no.runsafe.framework.api.database.ISchemaUpdate;
 import no.runsafe.framework.api.database.Repository;
 import no.runsafe.framework.api.database.SchemaUpdate;
+import no.runsafe.framework.api.player.IPlayer;
 
 public class AccountRepository extends Repository
 {
@@ -13,16 +14,16 @@ public class AccountRepository extends Repository
 		return "runsafe_accounts_tokens";
 	}
 
-	public void update(String playerName, String token)
+	public void update(IPlayer player, String token)
 	{
 		this.database.execute(
 			"INSERT INTO `runsafe_account_tokens` (playerName, token) VALUES(?, ?) " +
 				"ON DUPLICATE KEY UPDATE token = ?",
-			playerName, token, token
+			player.getName(), token, token
 		);
 
 		this.database.execute(
-			"DELETE FROM `runsafe_account_links` WHERE playerName = ?", playerName
+			"DELETE FROM `runsafe_account_links` WHERE playerName = ?", player.getName()
 		);
 	}
 
