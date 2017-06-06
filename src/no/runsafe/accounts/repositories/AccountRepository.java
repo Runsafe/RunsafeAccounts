@@ -6,8 +6,11 @@ import no.runsafe.framework.api.database.Repository;
 import no.runsafe.framework.api.database.SchemaUpdate;
 import no.runsafe.framework.api.player.IPlayer;
 
+import javax.annotation.Nonnull;
+
 public class AccountRepository extends Repository
 {
+	@Nonnull
 	@Override
 	public String getTableName()
 	{
@@ -27,6 +30,7 @@ public class AccountRepository extends Repository
 		);
 	}
 
+	@Nonnull
 	@Override
 	public ISchemaUpdate getSchemaUpdateQueries()
 	{
