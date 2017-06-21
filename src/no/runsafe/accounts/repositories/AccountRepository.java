@@ -19,9 +19,9 @@ public class AccountRepository extends Repository
 	public void update(IPlayer player, String token)
 	{
 		this.database.execute(
-			"INSERT INTO `runsafe_account_tokens` (playerName, token) VALUES(?, ?) " +
+			"INSERT INTO `runsafe_account_tokens` (playerName, token, playerID) VALUES(?, ?, ?) " +
 				"ON DUPLICATE KEY UPDATE token = ?",
-			player.getName(), token, token
+			player.getName(), token, player, token
 		);
 
 		this.database.execute(
@@ -41,6 +41,16 @@ public class AccountRepository extends Repository
 				"`token` varchar(8) NOT NULL," +
 				"PRIMARY KEY(`playerName`)" +
 			")"
+		);
+
+		update.addQueries(
+			String.format("ALTER TABLE `%s` ADD COLUMN playerID VARCHAR(36) NOT NULL", getTableName()),
+			String.format( // Player names -> Unique IDs
+				"UPDATE IGNORE `%s` SET `playerID` = " +
+					"COALESCE((SELECT `uuid` FROM player_db WHERE `name`=`%s`.`playerName`), `playerName`) " +
+					"WHERE length(`playerID`) != 36",
+				getTableName(), getTableName()
+			)
 		);
 
 		return update;
