@@ -14,14 +14,13 @@ public class Engine
 
 	public String getNewAuthToken(IPlayer player)
 	{
-		String playerName = player.getName();
-		String input = playerName + System.currentTimeMillis();
+		String input = player.getName() + System.currentTimeMillis();
 
 		Adler32 checksum = new Adler32();
 		checksum.update(input.getBytes());
 		String token = Integer.toHexString((int) checksum.getValue());
 
-		this.repository.update(playerName, token);
+		this.repository.update(player, token);
 		return token;
 	}
 
