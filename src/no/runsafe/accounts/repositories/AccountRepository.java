@@ -13,7 +13,7 @@ public class AccountRepository extends Repository
 	@Override
 	public String getTableName()
 	{
-		return "runsafe_accounts_tokens";
+		return "runsafe_account_tokens";
 	}
 
 	public void update(IPlayer player, String token)
