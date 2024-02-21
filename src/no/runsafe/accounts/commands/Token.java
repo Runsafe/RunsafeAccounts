@@ -21,5 +21,5 @@ public class Token extends PlayerCommand
 		return "&3New account token: " + this.engine.getNewAuthToken(executor);
 	}
 
-	private Engine engine;
+	private final Engine engine;
 }

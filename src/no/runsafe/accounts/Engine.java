@@ -24,5 +24,5 @@ public class Engine
 		return token;
 	}
 
-	private AccountRepository repository;
+	private final AccountRepository repository;
 }
